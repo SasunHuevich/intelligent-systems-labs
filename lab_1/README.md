@@ -31,15 +31,14 @@ halt.
 
 ### Запросы и ответы
 
-| Запрос | Результат |
-|--------|-----------|
-| `color(rover, red).` | **true.** |
-| `dog(X).` | **X = flash ; X = rover.** |
-| `has(Owner, rover).` | **Owner = tom .** |
-| `has(Owner, flash).` | **Owner = kate.** |
-| `has(Owner, butsy).` | **false.** |
-| `has(Owner, flash).` | **Owner = kate .** |
-| `has(Owner, Animal), color(Animal, Color), Color \= white.` | **Owner = tom, Animal = rover, Color = red ; Owner = kate, Animal = flash, Color = black.** |
+| Запрос | Результат | Объяснение |
+|--------|-----------|------------|
+| `color(rover, red).` | **true.** | В базе задан факт: у Ровера цвет `red` (рыжий). |
+| `dog(X).` | **X = flash ; X = rover.** | Собаками описаны только Флэш и Ровер. |
+| `has(Owner, rover).` | **Owner = tom .** | Том владеет собакой не чёрного цвета — это Ровер. |
+| `has(Owner, flash).` | **Owner = kate.** | У Кейта есть что-то чёрное — чёрная собака Флэш. |
+| `has(Owner, butsy).` | **false.** | Бутси — кошка, правила владения её не выводят. |
+| `has(Owner, Animal), color(Animal, Color), Color \= white.` | **tom — rover, red ; kate — flash, black.** | Небелые: рыжий Ровер у Тома и чёрный Флэш у Кейта; Стар белый. |
 
 
 ## Вариант 5
@@ -60,9 +59,9 @@ halt.
 
 ### Запросы и ответы
 
-| Запрос | Результат |
-|--------|-----------|
-| `parent(X, pat)` | **X = bob.** |
-| `child(X, lis).` | **false.** |
-| `child_root(X, pat). ` | **X = jim ; false.** |
-| `parent(pam, bob).` | **true.** |
+| Запрос | Результат | Объяснение |
+|--------|-----------|------------|
+| `parent(X, pat).` | **X = bob.** | У Pat один родитель в дереве — Bob. |
+| `child(X, lis).` | **false.** | У Lis нет детей, она только ребёнок Tom. |
+| `child_root(X, pat).` | **X = jim ; false.** | У Pat один потомок — Jim (ребёнок Pat). |
+| `mother(pam, bob).` | **true.** | Pam — родитель Bob и при этом `female(pam)`. |
